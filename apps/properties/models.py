@@ -156,11 +156,11 @@ class Property(TimeStampedUUIDModel):
 
     def save(self , *args , **kwargs):
         self.title = str.title(self.title)
-        self.description = str(self.description)
+        self.description = str.capitalize(self.description)
         self.ref_code = "".join(
             random.choices(string.ascii_uppercase + string.digits,k=10)
         )
-        super(Property,self).save(*args,*kwargs)
+        super(Property,self).save(*args,**kwargs)
 
     @property
     def final_property_price(self):

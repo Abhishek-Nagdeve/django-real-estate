@@ -21,7 +21,7 @@ class PropertySerializer(serializers.ModelSerializer):
             "state",
             "city",
             "pincode",
-            "street_adress",
+            "street_address",
             "property_number",
             "price",
             "tax",
