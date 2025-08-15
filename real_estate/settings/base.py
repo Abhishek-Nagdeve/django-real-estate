@@ -49,7 +49,9 @@ LOCAL_APPS = [
     "apps.common",
     "apps.users",
     "apps.profiles",
-    "apps.ratings"
+    "apps.ratings",
+    "apps.properties",
+    "apps.enquiries"
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -154,7 +156,7 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME" : timedelta(days=1),
     "SIGNING_KEY" : env("SIGNING_KEY"),
     "AUTH_HEADER_NAME" : "HTTP_AUTHORIZATION",
-    "AUTH_TOKEN_CLASSES" : ("rest_framework_simplejwt.token.AccessToken",),
+    "AUTH_TOKEN_CLASSES" : ("rest_framework_simplejwt.tokens.AccessToken",),
 }
 
 DJOSER = {
