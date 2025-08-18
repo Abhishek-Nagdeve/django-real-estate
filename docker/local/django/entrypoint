@@ -6,12 +6,12 @@ set -o pipefail
 
 set -o nounset
 
-posgres_ready() {
+postgres_ready() {
 python << END
 import sys
 import psycopg2
 try:
-    pyscopg2.connect(
+    psycopg2.connect(
         dbname="${POSTGRES_DB}",
         user="${POSTGRES_USER}",
         password="${POSTGRES_PASSWORD}",
@@ -19,15 +19,16 @@ try:
         port="${PG_PORT}"
     )
 except psycopg2.OperationalError:
+    print("Operations error.")
     sys.exit(-1)
 sys.exit(0)
 END
 }
 
 until postgres_ready; do
- >& echo "Waiting for PostgreSQL to become available...:-("
+ >&2 echo "Waiting for PostgreSQL to become available...:-("
  sleep 1
 done 
->& echo "PostgreSQL is Ready...!!!:-)"
+>&2 echo "PostgreSQL is Ready...!!!:-)"
 
 exec "$@"

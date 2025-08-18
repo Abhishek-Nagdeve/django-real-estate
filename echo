@@ -1,1 +1,1 @@
-/entrypoint: line 28: Waiting for PostgreSQL to become available...:-(: command not found
+/entrypoint: line 32: PostgreSQL is Ready...!!!:-): command not found
