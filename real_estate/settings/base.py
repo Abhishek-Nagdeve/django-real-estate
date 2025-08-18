@@ -1,8 +1,8 @@
-import environ
-
 from pathlib import Path
 
-env = environ.Env(DEBUG=(bool , False))
+import environ
+
+env = environ.Env(DEBUG=(bool, False))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -30,7 +30,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.sites"
+    "django.contrib.sites",
 ]
 
 SITE_ID = 1
@@ -42,7 +42,6 @@ THIRD_PARTY_APPS = [
     "phonenumber_field",
     "djoser",
     "rest_framework_simplejwt",
-
 ]
 
 LOCAL_APPS = [
@@ -51,7 +50,7 @@ LOCAL_APPS = [
     "apps.profiles",
     "apps.ratings",
     "apps.properties",
-    "apps.enquiries"
+    "apps.enquiries",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -88,8 +87,6 @@ WSGI_APPLICATION = "real_estate.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-
 
 
 # Password validation
@@ -140,44 +137,43 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES" : (
+    "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ) 
+    )
 }
 
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    "AUTH_HEADER_TYPES" : (
+    "AUTH_HEADER_TYPES": (
         "Bearer",
         "JWT",
     ),
-    "ACCESS_TOKEN_LIFETIME" : timedelta(minutes=120),
-    "REFRESH_TOKEN_LIFETIME" : timedelta(days=1),
-    "SIGNING_KEY" : env("SIGNING_KEY"),
-    "AUTH_HEADER_NAME" : "HTTP_AUTHORIZATION",
-    "AUTH_TOKEN_CLASSES" : ("rest_framework_simplejwt.tokens.AccessToken",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "SIGNING_KEY": env("SIGNING_KEY"),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
 }
 
 DJOSER = {
-    "LOGIN_FIELD":"email",
-    "USER_CREATE_PASSWORD_RETYPE" : True,
-    "USERNAME_CHANGED_EMAIL_CONFIRMATION" : True,
-    "PASSWORD_CHANGED_EMAIL_CONFIRMATION" : True,
-    "SEND_CONFIRMATION_EMAIL" : True,
-    "PASSWORD_RESET_CONFIRM_EMAIL" : "password/reset/confirm/{uid}/{token}",
+    "LOGIN_FIELD": "email",
+    "USER_CREATE_PASSWORD_RETYPE": True,
+    "USERNAME_CHANGED_EMAIL_CONFIRMATION": True,
+    "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
+    "SEND_CONFIRMATION_EMAIL": True,
+    "PASSWORD_RESET_CONFIRM_EMAIL": "password/reset/confirm/{uid}/{token}",
     "SET_PASSWORD_RETYPE": True,
     "PASSWORD_RESET_CONFIRM_RETYPE": True,
-    "USERNAME_RESET_CONFIRM_URL" : "email/reset/confirm/{uid}/{token}",
-    "ACTIVATION_URL" : "activate/{uid}/{token}",
+    "USERNAME_RESET_CONFIRM_URL": "email/reset/confirm/{uid}/{token}",
+    "ACTIVATION_URL": "activate/{uid}/{token}",
     "SEND_ACTIVATION_EMAIL": True,
-    "SERIALIZERS" : {
-        'user_create' : "apps.users.serializers.CreateUserSerializer",
-        'user' : "apps.users.serializers.UserSerializer",
-        'current_user' : 'apps.users.serializers.UserSerializer',
-        'user_delete' : 'djoser.serializer.delete.serailizer'
-    }
-
+    "SERIALIZERS": {
+        "user_create": "apps.users.serializers.CreateUserSerializer",
+        "user": "apps.users.serializers.UserSerializer",
+        "current_user": "apps.users.serializers.UserSerializer",
+        "user_delete": "djoser.serializer.delete.serailizer",
+    },
 }
 
 
@@ -190,34 +186,31 @@ logger = logging.getLogger(__name__)
 
 LOG_LEVEL = "INFO"
 
-logging.config.dictConfig({
-    "version" : 1,
-    "disable_existing_loggers" : False,
-    "formatters" : {
-        "console" : {
-            "format" : "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+logging.config.dictConfig(
+    {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "console": {
+                "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+            },
+            "file": {"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"},
+            "django.server": DEFAULT_LOGGING["formatters"]["django.server"],
         },
-        "file" : {
-            "format" : "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+        "handlers": {
+            "console": {"class": "logging.StreamHandler", "formatter": "console"},
+            "file": {
+                "level": "INFO",
+                "class": "logging.FileHandler",
+                "formatter": "file",
+                "filename": "logs/real_estate.log",
+            },
+            "django.server": DEFAULT_LOGGING["handlers"]["django.server"],
         },
-        "django.server" : DEFAULT_LOGGING["formatters"]["django.server"],
-    },
-    "handlers" : {
-        "console" : {
-            "class":"logging.StreamHandler",
-            "formatter":"console"
+        "loggers": {
+            "": {"level": "INFO", "handlers": ["console", "file"], "propagate": False},
+            "apps": {"level": "INFO", "handlers": ["console"], "propagate": False},
+            "django.server": DEFAULT_LOGGING["loggers"]["django.server"],
         },
-        "file" : {
-            "level" : "INFO",
-            "class" : "logging.FileHandler",
-            "formatter" : "file",
-            "filename" : "logs/real_estate.log"
-        },
-        "django.server" : DEFAULT_LOGGING["handlers"]["django.server"],
-    },
-    "loggers":{
-        "" : {"level": "INFO", "handlers": ["console","file"], "propagate":False},
-        "apps" : {"level" : "INFO" , "handlers" : ["console"] , "propagate" : False},
-        "django.server" : DEFAULT_LOGGING["loggers"]["django.server"],
     }
-})
+)

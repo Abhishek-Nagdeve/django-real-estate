@@ -1,17 +1,15 @@
 import json
+
 from rest_framework.renderers import JSONRenderer
+
 
 class ProfileJSONRenderer(JSONRenderer):
     charset = "utf-8"
 
-
     def render(self, data, accepted_media_type=None, renderer_context=None):
-        error = data.get( "error" , None)
+        error = data.get("error", None)
 
         if error is not None:
-            return super(ProfileJSONRenderer , self).render(data=data)
+            return super(ProfileJSONRenderer, self).render(data=data)
 
-        return json.dumps({"profile" : data})
-    
-    
-    
+        return json.dumps({"profile": data})

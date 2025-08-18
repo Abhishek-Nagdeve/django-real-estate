@@ -1,12 +1,12 @@
 from .base import *
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mailhog'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "mailhog"
 EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
-DEFAULT_FROM_EMAIL = 'noreply@example.com'
-DOMAIN = env('DOMAIN')
-SITE_NAME = 'Real Estate'
+DEFAULT_FROM_EMAIL = "noreply@example.com"
+DOMAIN = env("DOMAIN")
+SITE_NAME = "Real Estate"
 
 
 DATABASES = {
