@@ -6,7 +6,8 @@ EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
 DEFAULT_FROM_EMAIL = "noreply@example.com"
 DOMAIN = env("DOMAIN")
-SITE_NAME = "Real Estate"
+SITE_NAME = "Real Estate"   
+CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS").split(" ")
 
 
 DATABASES = {
