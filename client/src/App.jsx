@@ -1,9 +1,26 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-bootstrap'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import PropertiesPage from './pages/PropertiesPage'
+
 function App() {
 
   return (
-    <div className="App">
-      <h1>Wel come to Real Estate</h1>
-    </div>
+    <>
+      <Router>
+        <Header/>
+          <main className='py-3'>
+            <Routes>
+              <Route path='/' element={<HomePage/>}></Route>
+              <Route path='/properties' element={<PropertiesPage/>}></Route>
+            </Routes>
+          </main>
+        <Footer/>
+      </Router>
+      <ToastContainer/>
+    </>
   )
 
 }
