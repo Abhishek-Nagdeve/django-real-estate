@@ -1,42 +1,383 @@
+@import "antd/dist/reset.css";  /* ✅ correct import for antd v5+ */
+
+/* Reset some defaults */
+html {
+  height: auto;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+  line-height: 1.6;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%; /* Ensure it takes up the full available width of its container */
+}
+
+
+
+/* Ant Design Layout */
+.ant-layout {
+  min-height: auto;
+  background: #f5f6fa;
+}
+
+/* Ant Design Header */
+.ant-layout-header {
+  background: #1677ff; /* custom primary */
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Ant Design Sidebar */
+.ant-layout-sider {
+  background: #fff;
+  border-right: 1px solid #f0f0f0;
+}
+
+.ant-menu {
+  border-inline-end: none !important;
+}
+
+/* Ant Design Buttons */
+.ant-btn {
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.ant-btn-primary {
+  background: #1677ff;
+  border-color: #1677ff;
+}
+
+.ant-btn-primary:hover {
+  background: #4096ff;
+  border-color: #4096ff;
+}
+
+/* Ant Design Cards */
+.ant-card {
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+}
+
+.ant-card-head-title {
+  font-weight: 600;
+}
+
+/* Ant Design Table */
+.ant-table {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.ant-table-thead > tr > th {
+  font-weight: 600;
+  background: #fafafa;
+}
+
+/* Utility Classes */
+.page-container {
+  padding: 24px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.text-center {
   text-align: center;
 }
 
+/* ================= */
+/*  CUSTOM FOOTER    */
+/* ================= */
+
+.fluid-container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+.footer {
+  background-color: #001529;   /* Ant Design dark blue */
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* Logo section */
+.footer .logo {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer .logo a {
+  color: #fff;
+  margin-left: 8px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.footer .logo a:hover {
+  color: #40a9ff;
+}
+
+/* Social icons */
+.footer .social-links {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer .social-links li a {
+  color: #bbb;
+  font-size: 18px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer .social-links li a:hover {
+  color: #40a9ff;
+  transform: scale(1.2);
+}
+
+/* Copyright text */
+.footer .copyright {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* BackTop button */
+.goTop {
+  width: 40px;
+  height: 40px;
+  background: #1677ff;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.goTop:hover {
+  background: #4096ff;
+}
+
+/* General header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1890ff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo i {
+  margin-right: 8px;
+  color: #1890ff;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Desktop navigation visible by default */
+.mobileHidden {
+  display: block;
+}
+
+/* Mobile menu hidden by default */
+.mobileVisible {
+  display: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .mobileHidden {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  .mobileVisible {
+    display: block;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Anchor link spacing */
+.ant-anchor {
+  display: flex;
+  gap: 20px;
+}
+
+.ant-anchor-link-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.ant-anchor-link-title:hover {
+  color: #1890ff;
+}
+
+
+/* ================= */
+/*  ABOUT SECTION    */
+/* ================= */
+
+.about-section {
+  padding: 80px 20px;
+  background: #fff;
+}
+
+.about-section .title-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-section .title-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #001529;
+  margin-bottom: 10px;
+}
+
+.about-section .title-section p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.about-section .content-section {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Card-like content blocks */
+.about-section .content {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.about-section .content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Icon styling */
+.about-section .icon {
+  font-size: 36px;
+  color: #1677ff;
+  margin-bottom: 16px;
+}
+
+/* Titles inside the cards */
+.about-section .content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #001529;
+}
+
+/* Description text inside the cards */
+.about-section .content p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 16px;
+  }
+
+  .about-section .title-section h2 {
+    font-size: 26px;
+  }
+
+  .about-section .content {
+    padding: 20px;
   }
 }
 
-.card {
-  padding: 2em;
+.banner-section { margin-top: 20px; }
+
+/* Optional: avoid slick’s default center text look */
+.ant-carousel .slick-slide { text-align: left; }
+
+.banner-slide {
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-.read-the-docs {
-  color: #888;
+.banner-slide .slide-inner {
+  position: absolute;
+  top: 20%;   /* ⬅ pushes text to top portion */
+  left: 10%;
+  right: 10%;
+  max-width: 700px;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 8px;
+  color: #fff;
 }
