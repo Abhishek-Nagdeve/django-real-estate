@@ -2,7 +2,7 @@ import { createSlice ,createAsyncThunk } from "@reduxjs/toolkit"
 import propertyAPIService from "./propertyAPIService"
 
 const initialState = {
-    properies:[],
+    properties:[],
     property:{},
     isError:false,
     isLoading:false,
@@ -42,7 +42,7 @@ export const propertySlice = createSlice({
             .addCase(getProperties.fulfilled, (state,actions)=>{
                 state.isLoading = false
                 state.isSuccess = true
-                state.properies = actions.payload
+                state.properties = actions.payload.results
             })
             .addCase(getProperties.rejected , (state)=>{
                 state.isLoading = false
